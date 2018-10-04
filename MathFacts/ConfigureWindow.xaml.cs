@@ -38,7 +38,8 @@ namespace MathFacts
             {
                 { "factNumber", inputNumberText.Text },
                 { "name", nameText.Text },
-                { "operator", operationComboBox.SelectedItem.ToString() }
+                { "operator", operationComboBox.SelectedItem.ToString() },
+                { "numberOfProblems", text_numberOfProblems.Text}
             };
             MainWindow mainWindow = new MainWindow(config);
             mainWindow.Show();

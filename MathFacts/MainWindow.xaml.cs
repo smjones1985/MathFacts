@@ -9,13 +9,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Newtonsoft.Json;
+using System.Windows.Data;
+using System.ComponentModel;
 
 namespace MathFacts
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private static Button currentSelection;
 
@@ -29,6 +31,19 @@ namespace MathFacts
 
         private Problem currentProblem;
         private int currentProblemIndex;
+        private int problemCount;
+        public int ProblemCount
+        {
+            get
+            {
+                return problemCount;
+            }
+            set
+            {
+                problemCount = value;
+                OnPropertyChanged("ProblemCount");
+            }
+        }
 
         private int longestStreak = 0;
         private int currentStreak = 0;
@@ -69,27 +84,32 @@ namespace MathFacts
 
         private void BeginApplicationAsync(string inputNumber)
         {
+            label_count.SetBinding(ContentProperty, new Binding("ProblemCount"));
+            label_count.DataContext = this;
+
             MathFactsGenerator mathFactsGenerator = new MathFactsGenerator();
             int inputParsed;
             if (int.TryParse(inputNumber, out inputParsed))
             {
+                int numberOfProblems = int.Parse(Configuration["numberOfProblems"]);
                 switch (Configuration["operator"])
                 {
                     case "x":
-                        CurrentProblemSet = mathFactsGenerator.GenerateMultiplication(inputParsed, 10);
+                        CurrentProblemSet = mathFactsGenerator.GenerateMultiplication(inputParsed, numberOfProblems);
                         break;
                     case "/":
-                        CurrentProblemSet = mathFactsGenerator.GenerateDivision(inputParsed, 10);
+                        CurrentProblemSet = mathFactsGenerator.GenerateDivision(inputParsed, numberOfProblems);
                         break;
                     case "-":
-                        CurrentProblemSet = mathFactsGenerator.GenerateSubtraction(inputParsed, 10);
+                        CurrentProblemSet = mathFactsGenerator.GenerateSubtraction(inputParsed, numberOfProblems);
                         break;
                     case "+":
-                        CurrentProblemSet = mathFactsGenerator.GenerateAddition(inputParsed, 10);
+                        CurrentProblemSet = mathFactsGenerator.GenerateAddition(inputParsed, numberOfProblems);
                         break;
                     default:
                         break;
                 }
+                label_totalNumberOfProblems.Content = "/ " + CurrentProblemSet.Count;
                 PopulateWithProblemDetails();
             }
 
@@ -98,6 +118,7 @@ namespace MathFacts
 
         private void PopulateWithProblemDetails()
         {
+            ProblemCount += 1;
             var unanswered = CurrentProblemSet.Where(x => !x.Answered).ToList() ;
             if (unanswered.Count > 0)
             {
@@ -228,6 +249,12 @@ namespace MathFacts
         {
             currentSelection = (Button)sender;
             CheckSolution();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            Interlocked.CompareExchange(ref PropertyChanged, null, null)?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

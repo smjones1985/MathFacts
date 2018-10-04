@@ -8,12 +8,14 @@
         Title="ConfigureWindow" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="inputNumberText" Height="23" Margin="321,153,329,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFDDEAF0" TextAlignment="Center"/>
-        <Button x:Name="startButton" Content="Start" Margin="343,282,0,0" VerticalAlignment="Top" Click="StartButton_Click" HorizontalAlignment="Left" Width="89"/>
+        <Button x:Name="startButton" Content="Start" Margin="346,358,0,0" VerticalAlignment="Top" Click="StartButton_Click" HorizontalAlignment="Left" Width="89"/>
         <Label Content="Fact Number:" Margin="321,122,375,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="operationComboBox" HorizontalAlignment="Left" Margin="321,231,0,0" VerticalAlignment="Top" Width="142" SelectedIndex="0"/>
         <Label Content="Operation:&#xD;&#xA;" HorizontalAlignment="Left" Margin="321,200,0,0" VerticalAlignment="Top" Width="96" Height="26"/>
         <TextBox x:Name="nameText" HorizontalAlignment="Left" Height="23" Margin="321,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Background="#FFDDEAF0"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="321,45,0,0" VerticalAlignment="Top"/>
+        <Label Content="# of Problems:" HorizontalAlignment="Left" Margin="328,279,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="text_numberOfProblems" HorizontalAlignment="Left" Height="23" Margin="321,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Background="#FFDDEAF0"/>
 
     </Grid>
 </Window>

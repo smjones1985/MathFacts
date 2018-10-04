@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label x:Name="calculationLabel" Content="" HorizontalAlignment="Center" Margin="335,86,331,0" VerticalAlignment="Top" Height="88" Width="126" FontSize="48" FontWeight="Bold"/>
-        <Button x:Name="buttonOption1" Content="" HorizontalAlignment="Left" Margin="252,208,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption1_Click"/>
+        <Label x:Name="calculationLabel" Content="" HorizontalAlignment="Center" Margin="292,86,311,0" VerticalAlignment="Top" Height="88" Width="189" FontSize="48" FontWeight="Bold"/>
+        <Button x:Name="buttonOption1" Content="" HorizontalAlignment="Right" Margin="0,208,450,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption1_Click"/>
         <Button x:Name="buttonOption2" Content="" HorizontalAlignment="Left" Margin="435,208,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption2_Click"/>
-        <Button x:Name="buttonOption3" Content="" HorizontalAlignment="Left" Margin="252,295,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption3_Click"/>
+        <Button x:Name="buttonOption3" Content="" HorizontalAlignment="Right" Margin="0,295,450,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption3_Click"/>
         <Button x:Name="buttonOption4" Content="" HorizontalAlignment="Left" Margin="435,295,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.349,0.583" Height="45" Click="buttonOption4_Click"/>
+        <Label x:Name="label_count" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,86,0,0" Width="26"/>
+        <Label x:Name="label_totalNumberOfProblems" Content="Label" HorizontalAlignment="Left" Margin="102,86,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

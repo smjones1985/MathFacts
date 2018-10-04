@@ -12,11 +12,17 @@ namespace MathFactsApplication
         public List<Problem> GenerateMultiplication(int numberForFacts, int numberOfProblems)
         {
             List<Problem> problems = new List<Problem>();
-            for (int i = 0; i < numberOfProblems; i++)
+            for (int i = 0, x = 0; i < numberOfProblems; i++, x++)
             {
-                Problem problem = new Problem();
-                problem.Question = numberForFacts + " * " + i;
-                problem.Solution = i * numberForFacts;
+                if(x > 10)
+                {
+                    x = 0;
+                }
+                Problem problem = new Problem
+                {
+                    Question = numberForFacts + " * " + x,
+                    Solution = x * numberForFacts
+                };
                 problem = GenerateOptions(problem, numberForFacts);
                 problems.Add(problem);
             }
