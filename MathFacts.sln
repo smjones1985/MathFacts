@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathFacts", "MathFacts\MathFacts.csproj", "{C3577FEE-55B4-410E-B64F-F5FAB3527802}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathFactsApplication", "MathFactsApplication\MathFactsApplication.csproj", "{C436B839-9F05-4ED8-8B15-CD3F46305647}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C3577FEE-55B4-410E-B64F-F5FAB3527802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3577FEE-55B4-410E-B64F-F5FAB3527802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3577FEE-55B4-410E-B64F-F5FAB3527802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C436B839-9F05-4ED8-8B15-CD3F46305647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C436B839-9F05-4ED8-8B15-CD3F46305647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C436B839-9F05-4ED8-8B15-CD3F46305647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C436B839-9F05-4ED8-8B15-CD3F46305647}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
