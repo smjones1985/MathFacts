@@ -8,32 +8,11 @@ namespace MathFactsApplication
 {
     public class MathFactsGenerator
     {
-        public static Random GetRandom = new Random();
-        public List<Problem> GenerateMultiplication(int numberForFacts, int numberOfProblems)
-        {
-            List<Problem> problems = new List<Problem>();
-            for (int i = 0, x = 0; i < numberOfProblems; i++, x++)
-            {
-                if(x > 10)
-                {
-                    x = 0;
-                }
-                Problem problem = new Problem
-                {
-                    Question = numberForFacts + " * " + x,
-                    Solution = x * numberForFacts
-                };
-                problem = GenerateOptions(problem, numberForFacts);
-                problems.Add(problem);
-            }
-            return problems;
-        }
-
         private Problem GenerateOptions(Problem problem, int factNumber)
         {
             int numberOfOptions = 4;
             problem.AvailableAnswers = new int[numberOfOptions];
-            int solutionIndex = GetRandom.Next(0, 3);
+            int solutionIndex = CommonUtilities.GetRandom(0, 3);
             problem.AvailableAnswers[solutionIndex] = problem.Solution;
             OptionGenerator optionGenerator = new OptionGenerator(problem.Solution);
             for (int i = 0; i < numberOfOptions; i++)
@@ -47,42 +26,20 @@ namespace MathFactsApplication
             return problem;
         }
 
-        public List<Problem> GenerateDivision(int numberForFacts, int numberOfProblems)
+        internal List<Problem> GenerateProblemSet(int numberForFacts, int numberOfProblems, string operatorSign, Func<int, int, int> mathToUse)
         {
             List<Problem> problems = new List<Problem>();
-            for (int i = 0; i < numberOfProblems; i++)
+            for (int i = 0, x = 0; i < numberOfProblems; i++, x++)
             {
-                Problem problem = new Problem();
-                problem.Question = numberForFacts + " / " + i;
-                problem.Solution = numberForFacts / i;
-                problem = GenerateOptions(problem, numberForFacts);
-                problems.Add(problem);
-            }
-            return problems;
-        }
-
-        public List<Problem> GenerateSubtraction(int numberForFacts, int numberOfProblems)
-        {
-            List<Problem> problems = new List<Problem>();
-            for (int i = 0; i < numberOfProblems; i++)
-            {
-                Problem problem = new Problem();
-                problem.Question = numberForFacts + " - " + i;
-                problem.Solution = numberForFacts - i;
-                problem = GenerateOptions(problem, numberForFacts);
-                problems.Add(problem);
-            }
-            return problems;
-        }
-
-        public List<Problem> GenerateAddition(int numberForFacts, int numberOfProblems)
-        {
-            List<Problem> problems = new List<Problem>();
-            for (int i = 0; i < numberOfProblems; i++)
-            {
-                Problem problem = new Problem();
-                problem.Question = numberForFacts + " + " + i;
-                problem.Solution = i + numberForFacts;
+                if (x > 10)
+                {
+                    x = 0;
+                }
+                Problem problem = new Problem
+                {
+                    Question = numberForFacts + $" {operatorSign} " + x,
+                    Solution = mathToUse(numberForFacts, x)
+                };
                 problem = GenerateOptions(problem, numberForFacts);
                 problems.Add(problem);
             }

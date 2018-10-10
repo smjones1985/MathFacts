@@ -12,7 +12,7 @@ namespace MathFactsApplication
 
         public double TimeAnsweredIn { get; set; }
 
-        public bool Answered { get; set; }
+        public bool AnsweredCorrectly { get; set; }
 
         public string Question { get; set; }
 
